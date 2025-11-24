@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>YouTube Grid Player</title>
     <style>
         * {
@@ -61,53 +62,7 @@
             height: 100%;
             border: none;
         }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            padding: 12px 32px;
-            font-size: 16px;
-            font-weight: 600;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        #playAllBtn {
-            background: #FF0000;
-            color: white;
-        }
-
-        #playAllBtn:hover {
-            background: #E60000;
-            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
-        }
-
-        #playAllBtn:active {
-            transform: scale(0.98);
-        }
-
-        #stopAllBtn {
-            background: #888;
-            color: white;
-        }
-
-        #stopAllBtn:hover {
-            background: #666;
-            box-shadow: 0 4px 12px rgba(136, 136, 136, 0.3);
-        }
-
-        #stopAllBtn:active {
-            transform: scale(0.98);
-        }
+        
 
         @media (max-width: 768px) {
             .grid {
@@ -127,51 +82,41 @@
     </style>
 </head>
 <body>
-    <h1>🎬 YouTube Grid Player</h1>
+    <h1>msnz</h1>
 
     <div class="container">
         <div class="grid">
             <div class="video-wrapper">
-                <iframe id="video1" src="https://www.youtube.com/embed/With0YDpuWQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="video1" src="https://player.bilibili.com/player.html?bvid=BV1GxUrB4Een" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
             <div class="video-wrapper">
-                <iframe id="video2" src="https://www.youtube.com/embed/LfS0-022cq8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="video2" src="https://player.bilibili.com/player.html?bvid=BV1G4UrBdEoq" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
             <div class="video-wrapper">
-                <iframe id="video3" src="https://www.youtube.com/embed/vpXtzSpyV_8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="video3" src="https://player.bilibili.com/player.html?bvid=BV15WUrBZETh" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
             <div class="video-wrapper">
-                <iframe id="video4" src="https://www.youtube.com/embed/TvmLPQ7iBLQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="video4" src="https://player.bilibili.com/player.html?bvid=BV1GbUrBsELA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
-        </div>
-
-        <div class="button-container">
-            <button id="playAllBtn">▶ Play All</button>
-            <button id="stopAllBtn">⏹ Stop All</button>
         </div>
     </div>
 
     <script>
         const videoIds = ['video1', 'video2', 'video3', 'video4'];
         const baseUrls = [
-            'https://www.youtube.com/embed/With0YDpuWQ',
-            'https://www.youtube.com/embed/LfS0-022cq8',
-            'https://www.youtube.com/embed/vpXtzSpyV_8',
-            'https://www.youtube.com/embed/TvmLPQ7iBLQ'
+            'https://player.bilibili.com/player.html?bvid=BV1GxUrB4Een&t=0',
+            'https://player.bilibili.com/player.html?bvid=BV1G4UrBdEoq&t=0',
+            'https://player.bilibili.com/player.html?bvid=BV15WUrBZETh&t=0',
+            'https://player.bilibili.com/player.html?bvid=BV1GbUrBsELA&t=0'
         ];
 
-        document.getElementById('playAllBtn').addEventListener('click', function() {
-            videoIds.forEach((id, index) => {
-                const iframe = document.getElementById(id);
-                iframe.src = baseUrls[index] + '?autoplay=1';
-            });
-        });
-
-        document.getElementById('stopAllBtn').addEventListener('click', function() {
+        // Reset all videos to 0:00 on page load
+        window.addEventListener('load', function() {
             videoIds.forEach((id, index) => {
                 const iframe = document.getElementById(id);
                 iframe.src = baseUrls[index];
             });
+            console.log('Page loaded - all videos reset to 0:00');
         });
     </script>
 </body>
