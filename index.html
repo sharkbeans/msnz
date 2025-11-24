@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>YouTube Grid Player</title>
     <style>
         * {
             margin: 0;
@@ -13,20 +12,9 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f0f0f0;
-            padding: 20px;
-            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 28px;
+            justify-content: center;
+            padding: 20px;
         }
 
         .container {
@@ -68,35 +56,24 @@
             .grid {
                 grid-template-columns: 1fr;
             }
-
-            h1 {
-                font-size: 22px;
-                margin-bottom: 20px;
-            }
-
-            button {
-                padding: 10px 24px;
-                font-size: 14px;
-            }
         }
     </style>
 </head>
 <body>
-    <h1>msnz</h1>
 
     <div class="container">
         <div class="grid">
             <div class="video-wrapper">
-                <iframe id="video1" src="https://player.bilibili.com/player.html?bvid=BV1GxUrB4Een" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe id="video1" src="https://www.youtube.com/embed/With0YDpuWQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
             <div class="video-wrapper">
-                <iframe id="video2" src="https://player.bilibili.com/player.html?bvid=BV1G4UrBdEoq" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe id="video2" src="https://www.youtube.com/embed/LfS0-022cq8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
             <div class="video-wrapper">
-                <iframe id="video3" src="https://player.bilibili.com/player.html?bvid=BV15WUrBZETh" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe id="video3" src="https://www.youtube.com/embed/vpXtzSpyV_8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
             <div class="video-wrapper">
-                <iframe id="video4" src="https://player.bilibili.com/player.html?bvid=BV1GbUrBsELA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe id="video4" src="https://www.youtube.com/embed/TvmLPQ7iBLQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
         </div>
     </div>
@@ -104,13 +81,11 @@
     <script>
         const videoIds = ['video1', 'video2', 'video3', 'video4'];
         const baseUrls = [
-            'https://player.bilibili.com/player.html?bvid=BV1GxUrB4Een&t=0',
-            'https://player.bilibili.com/player.html?bvid=BV1G4UrBdEoq&t=0',
-            'https://player.bilibili.com/player.html?bvid=BV15WUrBZETh&t=0',
-            'https://player.bilibili.com/player.html?bvid=BV1GbUrBsELA&t=0'
+            'https://www.youtube.com/embed/With0YDpuWQ',
+            'https://www.youtube.com/embed/LfS0-022cq8',
+            'https://www.youtube.com/embed/vpXtzSpyV_8',
+            'https://www.youtube.com/embed/TvmLPQ7iBLQ'
         ];
-
-        // Reset all videos to 0:00 on page load
         window.addEventListener('load', function() {
             videoIds.forEach((id, index) => {
                 const iframe = document.getElementById(id);
