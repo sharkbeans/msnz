@@ -89,9 +89,9 @@
         window.addEventListener('load', function() {
             videoIds.forEach((id, index) => {
                 const iframe = document.getElementById(id);
-                iframe.src = baseUrls[index];
+                iframe.src = baseUrls[index] + '?autoplay=1';
             });
-            console.log('Page loaded - all videos reset to 0:00');
+            console.log('Page loaded - all videos autoplaying');
         });
     </script>
 </body>
