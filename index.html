@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Grid Player</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #playAllBtn {
+            background: #FF0000;
+            color: white;
+        }
+
+        #playAllBtn:hover {
+            background: #E60000;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+        }
+
+        #playAllBtn:active {
+            transform: scale(0.98);
+        }
+
+        #stopAllBtn {
+            background: #888;
+            color: white;
+        }
+
+        #stopAllBtn:hover {
+            background: #666;
+            box-shadow: 0 4px 12px rgba(136, 136, 136, 0.3);
+        }
+
+        #stopAllBtn:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            button {
+                padding: 10px 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 YouTube Grid Player</h1>
+
+    <div class="container">
+        <div class="grid">
+            <div class="video-wrapper">
+                <iframe id="video1" src="https://www.youtube.com/embed/With0YDpuWQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe id="video2" src="https://www.youtube.com/embed/LfS0-022cq8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe id="video3" src="https://www.youtube.com/embed/vpXtzSpyV_8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe id="video4" src="https://www.youtube.com/embed/TvmLPQ7iBLQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button id="playAllBtn">▶ Play All</button>
+            <button id="stopAllBtn">⏹ Stop All</button>
+        </div>
+    </div>
+
+    <script>
+        const videoIds = ['video1', 'video2', 'video3', 'video4'];
+        const baseUrls = [
+            'https://www.youtube.com/embed/With0YDpuWQ',
+            'https://www.youtube.com/embed/LfS0-022cq8',
+            'https://www.youtube.com/embed/vpXtzSpyV_8',
+            'https://www.youtube.com/embed/TvmLPQ7iBLQ'
+        ];
+
+        document.getElementById('playAllBtn').addEventListener('click', function() {
+            videoIds.forEach((id, index) => {
+                const iframe = document.getElementById(id);
+                iframe.src = baseUrls[index] + '?autoplay=1';
+            });
+        });
+
+        document.getElementById('stopAllBtn').addEventListener('click', function() {
+            videoIds.forEach((id, index) => {
+                const iframe = document.getElementById(id);
+                iframe.src = baseUrls[index];
+            });
+        });
+    </script>
+</body>
+</html>
